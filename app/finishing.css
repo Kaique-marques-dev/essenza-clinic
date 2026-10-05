@@ -1,0 +1,374 @@
+/* =========================================================
+   ESSENZA — ACABAMENTOS GLOBAIS
+   ========================================================= */
+
+:root {
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --shadow-soft:
+    0 12px 35px rgba(42, 33, 29, 0.05);
+
+  --shadow-medium:
+    0 22px 60px rgba(42, 33, 29, 0.08);
+
+  --focus-ring:
+    0 0 0 4px rgba(169, 130, 111, 0.16);
+}
+
+/* =========================================================
+   SELEÇÃO DE TEXTO
+   ========================================================= */
+
+::selection {
+  background: rgba(169, 130, 111, 0.25);
+  color: var(--color-text);
+}
+
+/* Firefox */
+
+::-moz-selection {
+  background: rgba(169, 130, 111, 0.25);
+  color: var(--color-text);
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color:
+    rgba(118, 89, 76, 0.42)
+    var(--color-background);
+}
+
+/* Chrome / Edge / Opera */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(118, 89, 76, 0.34);
+
+  border: 3px solid var(--color-background);
+
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(118, 89, 76, 0.55);
+}
+
+/* =========================================================
+   FOCO / ACESSIBILIDADE
+   ========================================================= */
+
+a,
+button,
+input,
+textarea,
+select {
+  outline: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 1px solid var(--color-primary-dark);
+
+  outline-offset: 4px;
+
+  box-shadow: var(--focus-ring);
+}
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    opacity 0.3s ease;
+}
+
+/* =========================================================
+   BOTÕES
+   ========================================================= */
+
+button {
+  transition:
+    transform 0.3s var(--ease-premium),
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* =========================================================
+   IMAGENS
+   ========================================================= */
+
+img {
+  user-select: none;
+
+  -webkit-user-drag: none;
+}
+
+/* =========================================================
+   VÍDEO
+   ========================================================= */
+
+video {
+  display: block;
+
+  background: var(--color-background-soft);
+}
+
+/* =========================================================
+   TIPOGRAFIA
+   ========================================================= */
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/*
+  Renderização um pouco mais refinada.
+*/
+
+body {
+  font-kerning: normal;
+
+  text-rendering: optimizeLegibility;
+}
+
+/* =========================================================
+   SUAVIZAÇÃO VISUAL ENTRE SEÇÕES
+   ========================================================= */
+
+section {
+  position: relative;
+
+  isolation: isolate;
+}
+
+/*
+  Linha extremamente sutil em seções adjacentes.
+  Ajuda a separar áreas claras sem criar caixas.
+*/
+
+section + section {
+  border-top-color: rgba(36, 34, 32, 0.025);
+}
+
+/* =========================================================
+   HOVER DE MÍDIA
+   ========================================================= */
+
+@media (hover: hover) and (pointer: fine) {
+  img {
+    transition:
+      transform 0.7s var(--ease-premium),
+      filter 0.5s ease;
+  }
+}
+
+/* =========================================================
+   ANIMAÇÃO DO SCROLL
+   ========================================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* =========================================================
+   MICRO ANIMAÇÃO PARA ÍCONES
+   ========================================================= */
+
+a svg,
+button svg {
+  flex-shrink: 0;
+
+  transition:
+    transform 0.3s var(--ease-premium),
+    opacity 0.3s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a:hover svg {
+    transform: translate(1px, -1px);
+  }
+}
+
+/* =========================================================
+   EFEITO DE CLIQUE
+   ========================================================= */
+
+a:active {
+  opacity: 0.82;
+}
+
+/* =========================================================
+   PERFORMANCE DE ANIMAÇÕES
+   ========================================================= */
+
+video,
+img {
+  backface-visibility: hidden;
+
+  -webkit-backface-visibility: hidden;
+}
+
+/* =========================================================
+   ANIMAÇÕES CSS UTILITÁRIAS
+   ========================================================= */
+
+@keyframes essenzaFadeUp {
+  from {
+    opacity: 0;
+
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+@keyframes essenzaFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes essenzaFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes essenzaPulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/*
+  Classes opcionais.
+  Podemos aplicar depois em qualquer componente.
+*/
+
+.fadeUp {
+  animation:
+    essenzaFadeUp
+    0.8s
+    var(--ease-premium)
+    both;
+}
+
+.fadeIn {
+  animation:
+    essenzaFadeIn
+    0.7s
+    ease
+    both;
+}
+
+.floatSoft {
+  animation:
+    essenzaFloat
+    5s
+    ease-in-out
+    infinite;
+}
+
+/* =========================================================
+   SCROLL REVEAL NATIVO
+   ========================================================= */
+
+/*
+  Em navegadores que suportam View Timeline,
+  elementos com .scrollReveal ganham animação
+  ligada ao scroll sem JavaScript.
+*/
+
+@supports (animation-timeline: view()) {
+  .scrollReveal {
+    animation-name: essenzaFadeUp;
+
+    animation-duration: 1s;
+
+    animation-fill-mode: both;
+
+    animation-timing-function: var(--ease-premium);
+
+    animation-timeline: view();
+
+    animation-range:
+      entry 10%
+      cover 30%;
+  }
+}
+
+/* =========================================================
+   REDUZIR MOVIMENTO
+   ========================================================= */
+
+/*
+  Muito importante:
+  se o usuário pediu menos animação no sistema,
+  respeitamos isso.
+*/
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,283 @@
+/* =========================================================
+   ESSENZA — RESPONSIVIDADE GLOBAL
+   ========================================================= */
+
+/*
+  Breakpoints gerais:
+  1400px = notebooks grandes
+  1200px = notebooks
+  1024px = tablets horizontais
+  768px  = tablets / mobile grande
+  560px  = smartphones
+  380px  = smartphones pequenos
+*/
+
+:root {
+  --page-gutter: 40px;
+  --section-spacing: 140px;
+}
+
+/* Evita estouro horizontal */
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  min-width: 320px;
+}
+
+main {
+  width: 100%;
+  overflow: clip;
+}
+
+/* Container global */
+
+.container {
+  width: min(
+    calc(100% - (var(--page-gutter) * 2)),
+    var(--container-width)
+  );
+
+  margin-inline: auto;
+}
+
+/* Mídias nunca estouram */
+
+img,
+video,
+svg,
+canvas {
+  max-width: 100%;
+}
+
+img,
+video {
+  height: auto;
+}
+
+/* Textos grandes não devem estourar */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a {
+  overflow-wrap: break-word;
+}
+
+/* Botões e links clicáveis */
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* IDs recebem respiro quando navegados pelo menu */
+
+section[id] {
+  scroll-margin-top: 100px;
+}
+
+/* =========================================================
+   DESKTOP / NOTEBOOK GRANDE
+   ========================================================= */
+
+@media (max-width: 1400px) {
+  :root {
+    --page-gutter: 36px;
+    --section-spacing: 125px;
+  }
+
+  .container {
+    max-width: 1180px;
+  }
+}
+
+/* =========================================================
+   NOTEBOOK
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  :root {
+    --page-gutter: 32px;
+    --section-spacing: 110px;
+  }
+
+  .container {
+    max-width: 1080px;
+  }
+}
+
+/* =========================================================
+   TABLET HORIZONTAL
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  :root {
+    --page-gutter: 28px;
+    --section-spacing: 95px;
+  }
+
+  section[id] {
+    scroll-margin-top: 80px;
+  }
+}
+
+/* =========================================================
+   TABLET / MOBILE GRANDE
+   ========================================================= */
+
+@media (max-width: 768px) {
+  :root {
+    --page-gutter: 22px;
+    --section-spacing: 82px;
+  }
+
+  html {
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /*
+    Ajuda qualquer flex/grid que tenha conteúdo comprido.
+  */
+
+  main * {
+    min-width: 0;
+  }
+
+  /*
+    Melhora toque no celular.
+  */
+
+  button,
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+  }
+
+  /*
+    Não forçamos 44px em links de texto,
+    apenas links visualmente tratados como botão.
+  */
+
+  a[role="button"] {
+    min-height: 44px;
+  }
+
+  section[id] {
+    scroll-margin-top: 72px;
+  }
+}
+
+/* =========================================================
+   SMARTPHONE
+   ========================================================= */
+
+@media (max-width: 560px) {
+  :root {
+    --page-gutter: 18px;
+    --section-spacing: 72px;
+  }
+
+  .container {
+    width: calc(100% - (var(--page-gutter) * 2));
+  }
+
+  /*
+    Impede títulos enormes de quebrarem o layout,
+    sem destruir os tamanhos definidos pelos modules.
+  */
+
+  h1,
+  h2 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /*
+    Inputs nunca causam zoom estranho no Safari/iPhone.
+  */
+
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+
+  /*
+    Vídeos e imagens mantêm comportamento consistente.
+  */
+
+  video,
+  img {
+    max-width: 100%;
+  }
+}
+
+/* =========================================================
+   SMARTPHONE PEQUENO
+   ========================================================= */
+
+@media (max-width: 380px) {
+  :root {
+    --page-gutter: 15px;
+  }
+
+  .container {
+    width: calc(100% - 30px);
+  }
+}
+
+/* =========================================================
+   ORIENTAÇÃO HORIZONTAL EM CELULAR
+   ========================================================= */
+
+@media (max-height: 550px) and (orientation: landscape) {
+  section[id] {
+    scroll-margin-top: 60px;
+  }
+}
+
+/* =========================================================
+   DISPOSITIVOS TOUCH
+   ========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+  /*
+    Efeitos de hover que deslocam elementos podem
+    parecer estranhos em touch.
+  */
+
+  a:hover,
+  button:hover {
+    transform: none;
+  }
+}
+
+/* =========================================================
+   TELAS MUITO GRANDES
+   ========================================================= */
+
+@media (min-width: 1700px) {
+  :root {
+    --page-gutter: 48px;
+  }
+
+  .container {
+    max-width: 1320px;
+  }
+}
